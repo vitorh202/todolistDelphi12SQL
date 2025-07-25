@@ -1,0 +1,3 @@
+JavaFile=D:\Java\jdk-24\bin\java.exe
+DexerFile=d:\embarcadero\studio\23.0\bin\Android\dexer-1.0.0.jar
+MinApiLevel=23

@@ -1,0 +1,29 @@
+inherited TDLMD_Windows: TTDLMD_Windows
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Sizes = (
+      384s
+      535s
+      384s
+      535s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout1: TScaledLayout
+        inherited S: TRectangle
+          inherited Tarefas_Layout: TLayout
+            inherited Tarefas_Scroll_Layout: TScrollBox
+              Position.X = 5.052627086639404000
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 352.600000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+    end
+  end
+end

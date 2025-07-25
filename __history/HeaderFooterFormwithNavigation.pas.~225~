@@ -1,0 +1,448 @@
+unit HeaderFooterFormwithNavigation;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Graphics, FMX.Forms, FMX.Dialogs, FMX.TabControl, System.Actions, FMX.ActnList,
+  FMX.Objects, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts, FMX.Platform,
+  FMX.Edit, uTarefaCard, Math, FMX.DateTimeCtrls, FMX.Calendar, FMX.Colors, System.Net.URLClient, System.JSON,
+  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo, System.Net.HttpClient, IniFiles, System.DateUtils;
+
+type
+  TTDLMD = class(TForm)
+    TabControl: TTabControl;
+    Inicio: TTabItem;
+    TabItem2: TTabItem;
+    S: TRectangle;
+    Button_Layout: TLayout;
+    Nova_Tarefa_Button: TCircle;
+    Label1: TLabel;
+    Top_Bar_Layout: TLayout;
+    info: TLabel;
+    Search_Layout: TLayout;
+    Lupa: TLabel;
+    Search_Bar: TEdit;
+    Search_Bar_BG: TRectangle;
+    ClearEditButton1: TClearEditButton;
+    Tarefas_Layout: TLayout;
+    Tarefas_Scroll_Layout: TScrollBox;
+    Tarefas_Content: TFlowLayout;
+    Tarefas_hoje_text: TLabel;
+    Tarefas_Hoje_Content: TFlowLayout;
+    Tarefas_Futuras_Texto: TLabel;
+    Tarefas_Futuras_Content: TFlowLayout;
+    ScaledLayout1: TScaledLayout;
+    ScaledLayout2: TScaledLayout;
+    Rectangle1: TRectangle;
+    Layout1: TLayout;
+    Layout2: TLayout;
+    Label3: TLabel;
+    Layout4: TLayout;
+    ScrollBox1: TScrollBox;
+    FlowLayout1: TFlowLayout;
+    Calendar: TCalendar;
+    StyleBook1: TStyleBook;
+    Name_Tarefa: TEdit;
+    Create_Task: TButton;
+    Nome_rectagle: TRectangle;
+    Desc_rectagle: TRectangle;
+    Prioridade: TLabel;
+    Flow_Pri_Button_Layout: TFlowLayout;
+    Pri_Extrema: TRectangle;
+    Pri_Extrema_Text: TLabel;
+    Pri_Alta: TRectangle;
+    Pri_Alta_Text: TLabel;
+    Pri_Regular: TRectangle;
+    Pri_Regular_Text: TLabel;
+    Voltar_btn: TButton;
+    Desc_Tarefa: TMemo;
+    Descricao_Tarefa: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure TitleActionUpdate(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure Nova_Tarefa_ButtonMouseEnter(Sender: TObject);
+    procedure Nova_Tarefa_ButtonMouseLeave(Sender: TObject);
+    procedure Nova_Tarefa_ButtonClick(Sender: TObject);
+    procedure CalendarMouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; var Handled: Boolean);
+    procedure Voltar_btnClick(Sender: TObject);
+    procedure Pri_RegularClick(Sender: TObject);
+    procedure Pri_AltaClick(Sender: TObject);
+    procedure Pri_ExtremaClick(Sender: TObject);
+    procedure Create_TaskClick(Sender: TObject);
+    procedure Desc_TarefaEnter(Sender: TObject);
+    procedure Desc_TarefaExit(Sender: TObject);
+
+  private
+    { Private declarations }
+    procedure Create_Tarefa(Flow: TFlowLayout; const Titulo, Descricao: string; const Categoria: integer; const DataLimite: TDateTime);
+    procedure AjustarAlturaFlowLayout(Flow: TFlowLayout);
+    procedure Pri_Button_Style();
+    procedure VerificarETrazerTarefas();
+
+  public
+    { Public declarations }
+
+  end;
+
+var
+  TDLMD: TTDLMD;
+  v_prioridade: string;
+
+implementation
+
+{$R *.fmx}
+{$R *.LgXhdpiPh.fmx ANDROID}
+{$R *.iPhone4in.fmx IOS}
+{$R *.SmXhdpiPh.fmx ANDROID}
+{$R *.XLgXhdpiTb.fmx ANDROID}
+{$R *.Moto360.fmx ANDROID}
+{$R *.NmXhdpiPh.fmx ANDROID}
+{$R *.Windows.fmx MSWINDOWS}
+{$R *.Surface.fmx MSWINDOWS}
+
+procedure TTDLMD.TitleActionUpdate(Sender: TObject);
+begin
+  if Sender is TCustomAction then
+  begin
+    if TabControl.ActiveTab <> nil then
+      TCustomAction(Sender).Text := TabControl.ActiveTab.Text
+    else
+      TCustomAction(Sender).Text := '';
+  end;
+end;
+
+procedure TTDLMD.Voltar_btnClick(Sender: TObject);
+begin
+    TabControl.SetActiveTabWithTransition(
+            Inicio,
+            TTabTransition.Slide,
+            TTabTransitionDirection.Reversed
+    );
+end;
+
+procedure TTDLMD.FormCreate(Sender: TObject);
+begin
+  { This defines the default active tab at runtime }
+  TabControl.First(TTabTransition.None);
+
+
+  { Teste de instancia de tarefa }
+  VerificarETrazerTarefas();
+ // Create_Tarefa(Tarefas_Futuras_Content,'Titulo','Descrição', 1);
+ // Create_Tarefa(Tarefas_Hoje_Content,'Titulo','Descrição', 2);
+
+
+  if TOSVersion.Platform = TOSVersion.TPlatform.pfAndroid then
+  begin
+
+       { Rodando no Android }
+       
+
+  end
+  else if TOSVersion.Platform = TOSVersion.TPlatform.pfWindows then
+  begin
+        { Rodando no Windows }
+        self.Height := Round(1920 * 0.5);
+        self.Width := Round(1080 * 0.6);
+        Top := 0;
+        Left := Round(Screen.Width - Width);
+
+  end;
+
+end;
+
+procedure TTDLMD.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+begin
+  if (Key = vkHardwareBack) and (TabControl.TabIndex <> 0) then
+  begin
+    TabControl.First;
+    Key := 0;
+  end;
+end;
+
+procedure TTDLMD.Nova_Tarefa_ButtonClick(Sender: TObject);
+begin
+    TabControl.SetActiveTabWithTransition(
+            Tabitem2,
+            TTabTransition.Slide,
+            TTabTransitionDirection.Normal
+    );
+    Pri_Button_Style();
+
+end;
+
+procedure TTDLMD.Nova_Tarefa_ButtonMouseEnter(Sender: TObject);
+begin
+     Nova_Tarefa_Button.fill.Color := TAlphaColorRec.Aquamarine;
+end;
+
+procedure TTDLMD.Nova_Tarefa_ButtonMouseLeave(Sender: TObject);
+begin
+     Nova_Tarefa_Button.fill.Color := TAlphaColorRec.Greenyellow;
+end;
+
+
+procedure TTDLMD.CalendarMouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; var Handled: Boolean);
+begin
+       Handled := True;
+end;
+
+procedure TTDLMD.Create_Tarefa(Flow: TFlowLayout; const Titulo, Descricao: string; const Categoria: Integer; const DataLimite: TDateTime);
+  var
+  Tarefa: TTarefaCard;
+  Cor: TAlphaColor;
+begin
+
+  {Configuração de categoria 0 - Concluida (Verde), 1- Baixa prioridade (Cinza)
+  2- Média prioridade (laraja) 3- Urgente (Vermelha)}
+
+  case Categoria of
+  0: Cor := TAlphaColorRec.Green;
+  1: Cor := TAlphaColorRec.Darkgray;
+  2: Cor := TAlphaColorRec.Orange;
+  3: Cor := TAlphaColorRec.Red;
+  else
+  Cor := TAlphaColorRec.Darkgray;
+
+  end;
+
+
+  Tarefa := TTarefaCard.Create(Flow, Titulo, Descricao, Cor, DataLimite);
+  AjustarAlturaFlowLayout(Flow);
+  AjustarAlturaFlowLayout(Tarefas_Content);
+end;
+
+// Criar tarefa no BD.
+
+procedure TTDLMD.Create_TaskClick(Sender: TObject);
+var
+  Client: THTTPClient;
+  JSONBody: TStringStream;
+  JSON: TJSONObject;
+  Response: IHTTPResponse;
+begin
+        // Verifica se o título está vazio
+  if Trim(Name_Tarefa.Text) = '' then
+  begin
+    ShowMessage('Por favor, insira um título para a tarefa.');
+    Exit;
+  end;
+
+  // Verifica se a descrição está vazia
+  if Trim(Desc_Tarefa.Text) = '' then
+  begin
+    ShowMessage('Por favor, insira uma descrição para a tarefa.');
+    Exit;
+  end;
+
+  // Verifica a data atual
+
+  if Calendar.Date < Date then
+begin
+  ShowMessage('A data selecionada já passou!');
+  Exit;
+end;
+
+
+  // Verifica se a prioridade está definida
+  if v_prioridade = '' then
+  begin
+    ShowMessage('Por favor, selecione uma prioridade.');
+    Exit;
+  end;
+
+     Client := THTTPClient.Create();
+   try
+     JSON := TJSONObject.Create;
+     try
+       Json.AddPair('titulo', Name_Tarefa.Text);
+       Json.AddPair('descricao', Desc_Tarefa.Text);
+       JSON.AddPair('data_limite', FormatDateTime('yyyy-mm-dd', Calendar.Date));
+       JSON.AddPair('prioridade', v_prioridade);
+
+       JSONBody := TStringStream.Create(JSON.ToString, TEncoding.UTF8);
+
+       try
+          // Envia o POST para a API
+          Response := Client.Post('https://delphi-sql-api.vercel.app/tarefas', JSONBody, nil);
+
+          if Response.StatusCode = 201 then
+          begin
+            ShowMessage('Tarefa criada com sucesso!');
+            VerificarETrazerTarefas();
+            TabControl.SetActiveTabWithTransition(
+            Inicio,
+            TTabTransition.Slide,
+            TTabTransitionDirection.Reversed
+            );
+          end
+          else
+            ShowMessage('Erro ao criar tarefa: ' + Response.ContentAsString);
+       finally
+       JSONBody.Free;
+
+       end;
+
+     finally
+      JSON.Free;
+     end;
+   finally
+   Client.Free;
+   end;
+
+end;
+
+//
+
+procedure TTDLMD.Desc_TarefaEnter(Sender: TObject);
+begin
+    Descricao_Tarefa.Visible := False;
+end;
+
+procedure TTDLMD.Desc_TarefaExit(Sender: TObject);
+begin
+    Descricao_Tarefa.Visible := Desc_Tarefa.Text = '';
+end;
+
+procedure TTDLMD.AjustarAlturaFlowLayout(Flow: TFlowLayout);
+var
+  i: Integer;
+  MaxBottom: Single;
+begin
+  MaxBottom := 0;
+  for i := 0 to Flow.ControlsCount - 1 do
+    MaxBottom := Max(MaxBottom, Flow.Controls[i].Position.Y + Flow.Controls[i].Height);
+
+  Flow.Height := MaxBottom + Flow.Padding.Bottom;
+end;
+
+procedure TTDLMD.Pri_Button_Style();
+var
+  i: Integer;
+  R: Trectangle;
+begin
+    for i := 0 to Flow_Pri_Button_Layout.ChildrenCount - 1 do
+    begin
+      if Flow_Pri_Button_Layout.children[i] is Trectangle then
+      begin
+        R := Trectangle(Flow_Pri_Button_Layout.children[i]);
+        R.Fill.Kind := TBrushKind.None;
+        R.Stroke.Kind := TBrushKind.Solid;
+              case i of
+                0: R.Stroke.Color := TAlphaColors.Crimson;
+                1: R.Stroke.Color := TAlphaColors.Coral;
+                2: R.Stroke.Color := TAlphaColors.Gray;
+               else
+                   R.Fill.Color := TAlphaColors.Lightgray;
+              end;
+        R.Stroke.Thickness := 3;
+        R.XRadius := 10;
+        R.YRadius := 10;
+        v_prioridade := '';
+      end;
+
+    end;
+
+
+end;
+
+
+procedure TTDLMD.Pri_ExtremaClick(Sender: TObject);
+begin
+  v_prioridade := 'e';
+  Pri_Extrema.Fill.Kind := TbrushKind.Solid;
+  Pri_Alta.Fill.Kind := TbrushKind.None;
+  Pri_Regular.Fill.Kind := TbrushKind.None;
+end;
+
+procedure TTDLMD.Pri_RegularClick(Sender: TObject);
+begin
+  v_prioridade := 'r';
+  Pri_Regular.Fill.Kind := TbrushKind.Solid;
+  Pri_Alta.Fill.Kind := TbrushKind.None;
+  Pri_Extrema.Fill.Kind := TbrushKind.None;
+end;
+
+procedure TTDLMD.Pri_AltaClick(Sender: TObject);
+begin
+  v_prioridade := 'a';
+  Pri_Alta.Fill.Kind := TbrushKind.Solid;
+  Pri_Regular.Fill.Kind := TbrushKind.None;
+  Pri_Extrema.Fill.Kind := TbrushKind.None;
+end;
+
+
+// Verificação de tarefas
+
+procedure TTDLMD.VerificarETrazerTarefas;
+var
+  Client: THTTPClient;
+  Response: IHTTPResponse;
+  JSONArray: TJSONArray;
+  JSONItem: TJSONObject;
+  i: Integer;
+  Titulo, Descricao, Prioridade: string;
+  DataLimite: TDate;
+  Concluida: Boolean;
+  Categoria: Integer;
+begin
+  Client := THTTPClient.Create;
+  try
+    Response := Client.Get('https://delphi-sql-api.vercel.app/tarefas');
+
+    if Response.StatusCode = 200 then
+    begin
+      JSONArray := TJSONObject.ParseJSONValue(Response.ContentAsString) as TJSONArray;
+
+      for i := 0 to JSONArray.Count - 1 do
+      begin
+        JSONItem := JSONArray.Items[i] as TJSONObject;
+
+        Titulo := JSONItem.GetValue('titulo').Value;
+        Descricao := JSONItem.GetValue('descricao').Value;
+        Prioridade := JSONItem.GetValue('prioridade').Value;
+        DataLimite := Trunc(ISO8601ToDate(JSONItem.GetValue('data_limite').Value));
+        Concluida := JSONItem.GetValue('concluida').Value = 'true';
+
+        // Apaga tarefas concluídas de dias anteriores
+        if Concluida and (DataLimite < Date) then
+          continue;
+
+        // Define categoria visual
+        if Concluida then
+          Categoria := 0
+        else if Prioridade = 'r' then
+          Categoria := 1
+        else if Prioridade = 'a' then
+          Categoria := 2
+        else if Prioridade = 'e' then
+          Categoria := 3
+        else
+          Categoria := 1;
+
+        // Escolhe layout de destino
+        if DataLimite = Date then
+          Create_Tarefa(Tarefas_Hoje_Content, Titulo, Descricao, Categoria, DataLimite)
+        else
+          Create_Tarefa(Tarefas_Futuras_Content, Titulo, Descricao, Categoria, DataLimite);
+      end;
+    end
+    else
+      ShowMessage('Erro ao buscar tarefas: ' + Response.ContentAsString);
+  finally
+    Client.Free;
+  end;
+end;
+
+
+
+end.
+
+
+
+
+
+

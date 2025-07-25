@@ -1,0 +1,67 @@
+inherited TDLMD_NmXhdpiPh: TTDLMD_NmXhdpiPh
+  ClientHeight = 615
+  ClientWidth = 400
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Size.Width = 400.000000000000000000
+    Size.Height = 615.000000000000000000
+    Sizes = (
+      400s
+      615s
+      400s
+      615s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout1: TScaledLayout
+        OriginalWidth = 400.000000000000000000
+        OriginalHeight = 615.000000000000000000
+        Size.Width = 400.000000000000000000
+        Size.Height = 615.000000000000000000
+        inherited S: TRectangle
+          Size.Width = 400.000000000000000000
+          Size.Height = 615.000000000000000000
+          inherited Button_Layout: TLayout
+            Position.Y = 562.000000000000000000
+            Size.Width = 400.000000000000000000
+            inherited Nova_Tarefa_Button: TCircle
+              Position.X = 345.000000000000000000
+            end
+          end
+          inherited Top_Bar_Layout: TLayout
+            Size.Width = 400.000000000000000000
+            inherited info: TLabel
+              Size.Width = 400.000000000000000000
+            end
+            inherited Search_Layout: TLayout
+              Size.Width = 400.000000000000000000
+              inherited Search_Bar_BG: TRectangle
+                Size.Width = 349.000000000000000000
+                inherited Search_Bar: TEdit
+                  Size.Width = 349.000000000000000000
+                  inherited ClearEditButton1: TClearEditButton
+                    Size.Height = 30.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+          inherited Tarefas_Layout: TLayout
+            Size.Width = 400.000000000000000000
+            Size.Height = 457.000000000000000000
+            inherited Tarefas_Scroll_Layout: TScrollBox
+              Position.X = 5.052628993988037000
+              Size.Width = 369.852600097656300000
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 368.500000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+    end
+  end
+end

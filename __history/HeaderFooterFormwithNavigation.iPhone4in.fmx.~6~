@@ -1,0 +1,52 @@
+inherited TDLMD_iPhone4in: TTDLMD_iPhone4in
+  ClientHeight = 548
+  ClientWidth = 320
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Size.Width = 320.000000000000000000
+    Size.Height = 548.000000000000000000
+    Sizes = (
+      320s
+      548s
+      320s
+      548s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout1: TScaledLayout
+        OriginalWidth = 320.000000000000000000
+        OriginalHeight = 548.000000000000000000
+        Size.Width = 320.000000000000000000
+        Size.Height = 548.000000000000000000
+        inherited S: TRectangle
+          Size.Width = 320.000000000000000000
+          Size.Height = 548.000000000000000000
+          inherited Button_Layout: TLayout
+            Position.Y = 495.000000000000000000
+            Size.Width = 320.000000000000000000
+            inherited Nova_Tarefa_Button: TCircle
+              Position.X = 265.000000000000000000
+            end
+          end
+          inherited Top_Bar_Layout: TLayout
+            Size.Width = 320.000000000000000000
+            inherited info: TLabel
+              Size.Width = 320.000000000000000000
+            end
+          end
+          inherited Tarefas_Layout: TLayout
+            Size.Width = 320.000000000000000000
+            inherited Tarefas_Scroll_Layout: TScrollBox
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 368.500000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+    end
+  end
+end

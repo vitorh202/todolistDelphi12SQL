@@ -1,0 +1,95 @@
+inherited TDLMD_Moto360: TTDLMD_Moto360
+  ClientHeight = 218
+  ClientWidth = 240
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Size.Width = 240.000000000000000000
+    Size.Height = 218.000000000000000000
+    Sizes = (
+      240s
+      218s
+      240s
+      218s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout1: TScaledLayout
+        OriginalWidth = 240.000000000000000000
+        OriginalHeight = 218.000000000000000000
+        Size.Width = 240.000000000000000000
+        Size.Height = 218.000000000000000000
+        inherited S: TRectangle
+          Size.Width = 240.000000000000000000
+          Size.Height = 218.000000000000000000
+          inherited Button_Layout: TLayout
+            Position.Y = 165.000000000000000000
+            Size.Width = 240.000000000000000000
+            inherited Nova_Tarefa_Button: TCircle
+              Position.X = 185.000000000000000000
+            end
+          end
+          inherited Top_Bar_Layout: TLayout
+            Size.Width = 240.000000000000000000
+            inherited info: TLabel
+              Size.Width = 240.000000000000000000
+            end
+            inherited Search_Layout: TLayout
+              Size.Width = 240.000000000000000000
+              inherited Search_Bar_BG: TRectangle
+                Size.Width = 189.000000000000000000
+                inherited Search_Bar: TEdit
+                  Size.Width = 189.000000000000000000
+                end
+              end
+            end
+          end
+          inherited Tarefas_Layout: TLayout
+            Size.Width = 240.000000000000000000
+            Size.Height = 60.000000000000000000
+            inherited Tarefas_Scroll_Layout: TScrollBox
+              Position.X = 5.052630424499512000
+              Size.Height = 365.706237792968800000
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 368.500000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout2: TScaledLayout
+        Size.Width = 240.000000000000000000
+        Size.Height = 218.000000000000000000
+        inherited Rectangle1: TRectangle
+          Size.Width = 240.000000000000000000
+          Size.Height = 218.000000000000000000
+          inherited Layout1: TLayout
+            Position.Y = 165.000000000000000000
+            Size.Width = 240.000000000000000000
+          end
+          inherited Layout2: TLayout
+            Size.Width = 240.000000000000000000
+            inherited Label3: TLabel
+              Size.Width = 240.000000000000000000
+            end
+          end
+          inherited Layout4: TLayout
+            Size.Width = 240.000000000000000000
+            Size.Height = 100.000000000000000000
+            inherited ScrollBox1: TScrollBox
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 352.600000000000000000
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited StyleBook1: TStyleBook
+    Styles = <
+      item
+      end>
+  end
+end

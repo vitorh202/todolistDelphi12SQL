@@ -1,0 +1,47 @@
+inherited TDLMD_LgXhdpiPh: TTDLMD_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  OnKeyUp = FormKeyUp
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Size.Width = 450.000000000000000000
+    Size.Height = 695.000000000000000000
+    Sizes = (
+      450s
+      695s
+      450s
+      695s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited S: TRectangle
+        Size.Width = 527.343688964843800000
+        Size.Height = 879.826965332031300000
+        inherited Button_Layout: TLayout
+          Position.Y = 826.826965332031300000
+          Size.Width = 527.343688964843800000
+          inherited Nova_Tarefa_Button: TCircle
+            Padding.Right = 10.000000000000000000
+            Position.X = 472.343688964843800000
+          end
+        end
+        inherited Top_Bar_Layout: TLayout
+          Size.Width = 527.343688964843800000
+          inherited info: TLabel
+            Size.Width = 527.343688964843800000
+          end
+          inherited Search_Layout: TLayout
+            Size.Width = 527.343688964843800000
+            inherited Search_Bar: TEdit
+              Size.Width = 476.343688964843800000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+    end
+  end
+end

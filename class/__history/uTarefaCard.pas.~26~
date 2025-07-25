@@ -1,0 +1,76 @@
+unit uTarefaCard;
+
+interface
+
+uses
+  System.Classes, FMX.Objects, FMX.Controls, FMX.StdCtrls, FMX.Layouts, System.UITypes, FMX.Types;
+
+type
+  TTarefaCard = class
+  private
+    FCard: TRectangle;
+    FLabelTitulo: TLabel;
+    FLabelDescricao: TLabel;
+    FRadioConcluido: TCheckBox;
+    FFaixaPrioridade: TRectangle;
+  public
+    constructor Create(AOwner: TControl; const Titulo, Descricao: string; Prioridade: TAlphaColor);
+    property Card: TRectangle read FCard;
+  end;
+
+implementation
+
+constructor TTarefaCard.Create(AOwner: TControl; const Titulo, Descricao: string; Prioridade: TAlphaColor);
+begin
+
+  // Card_Fundo
+  FCard := TRectangle.Create(AOwner);
+  FCard.Parent := AOwner;
+  FCard.Width := 300;
+  FCard.Height := 70;
+  FCard.Fill.Color := TAlphaColorRec.Lightgray;
+  FCard.XRadius := 10;
+  FCard.YRadius := 10;
+  FCard.Margins.Bottom := 10;
+
+
+  //Faixa de prioridade
+  FFaixaPrioridade := TRectangle.Create(FCard);
+  FFaixaPrioridade.Parent := FCard;
+  FFaixaPrioridade.Align := TAlignLayout.Left;
+  FFaixaPrioridade.Width := 10;
+  FFaixaPrioridade.Fill.Color := Prioridade;
+
+  // CheckBox
+  FRadioConcluido := TCheckBox.Create(FCard);
+  FRadioConcluido.Parent := FCard;
+  FRadioConcluido.Position.X := FCard.Width - 30;
+  FRadioConcluido.Position.Y := FCard.Height / 2 - FRadioConcluido.Height / 2;
+
+  // Título
+  FLabelTitulo := TLabel.Create(FCard);
+  FLabelTitulo.StyledSettings := FLabelTitulo.StyledSettings - [TStyledSetting.Size];
+  FLabelTitulo.Parent := FCard;
+  FLabelTitulo.Position.X := 20;
+  FLabelTitulo.Position.Y := 2;
+  FLabelTitulo.Width := FCard.Width - 60;
+  FLabelTitulo.Text := Titulo;
+  FLabelTitulo.TextSettings.Font.Style := [TFontStyle.fsBold];
+  FLabelTitulo.TextSettings.Font.Size := 14;
+
+  // Descrição
+  FLabelDescricao := TLabel.Create(FCard);
+  FLabelDescricao.StyledSettings := FLabelDescricao.StyledSettings - [TStyledSetting.Size];
+  FLabelDescricao.Parent := FCard;
+  FLabelDescricao.Position.X := 20;
+  FLabelDescricao.Position.Y := 15;
+  FLabelDescricao.Width := FCard.Width - 60;
+  FLabelDescricao.Height := 50;
+  FLabelDescricao.Text := Descricao;
+  FLabelDescricao.WordWrap := True;
+  FLabelDescricao.AutoSize := False;
+  FLabelDescricao.TextSettings.Font.Size := 10;
+  FLabelDescricao.TextSettings.FontColor := TAlphaColorRec.Dimgray;
+end;
+
+end.

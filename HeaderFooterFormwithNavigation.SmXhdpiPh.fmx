@@ -1,0 +1,129 @@
+inherited TDLMD_SmXhdpiPh: TTDLMD_SmXhdpiPh
+  ClientHeight = 375
+  ClientWidth = 250
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Size.Width = 250.000000000000000000
+    Size.Height = 375.000000000000000000
+    Sizes = (
+      250s
+      375s
+      250s
+      375s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout1: TScaledLayout
+        OriginalWidth = 250.000000000000000000
+        OriginalHeight = 375.000000000000000000
+        Size.Width = 250.000000000000000000
+        Size.Height = 375.000000000000000000
+        inherited S: TRectangle
+          Size.Width = 250.000000000000000000
+          Size.Height = 375.000000000000000000
+          inherited Button_Layout: TLayout
+            Position.Y = 322.000000000000000000
+            Size.Width = 250.000000000000000000
+            inherited Nova_Tarefa_Button: TCircle
+              Position.X = 195.000000000000000000
+            end
+          end
+          inherited Top_Bar_Layout: TLayout
+            Size.Width = 250.000000000000000000
+            inherited info: TLabel
+              Size.Width = 250.000000000000000000
+            end
+            inherited Search_Layout: TLayout
+              Size.Width = 250.000000000000000000
+              inherited Search_Bar_BG: TRectangle
+                Size.Width = 199.000000000000000000
+                inherited Search_Bar: TEdit
+                  Size.Width = 199.000000000000000000
+                end
+              end
+            end
+          end
+          inherited Tarefas_Layout: TLayout
+            Size.Width = 250.000000000000000000
+            Size.Height = 217.000000000000000000
+            inherited Tarefas_Scroll_Layout: TScrollBox
+              Position.X = 5.052626609802246000
+              Size.Width = 369.852630615234400000
+              Size.Height = 365.706207275390600000
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 368.500000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      StyledSettings = [Family, Size, Style, FontColor, Other]
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout2: TScaledLayout
+        OriginalWidth = 250.000000000000000000
+        OriginalHeight = 400.000000000000000000
+        Size.Width = 250.000000000000000000
+        Size.Height = 375.000000000000000000
+        inherited Rectangle1: TRectangle
+          Size.Width = 250.000000000000000000
+          Size.Height = 375.000000000000000000
+          inherited Layout1: TLayout
+            Position.Y = 322.000000000000000000
+            Size.Width = 250.000000000000000000
+            inherited Create_Task: TButton
+              Margins.Right = 3.000000000000000000
+              Size.Width = 239.000000000000000000
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+            end
+          end
+          inherited Layout2: TLayout
+            Size.Width = 250.000000000000000000
+            inherited Label3: TLabel
+              Size.Width = 250.000000000000000000
+            end
+          end
+          inherited Layout4: TLayout
+            Size.Width = 250.000000000000000000
+            Size.Height = 257.000000000000000000
+            inherited ScrollBox1: TScrollBox
+              Size.Height = 386.283538818359400000
+              Viewport.Width = 361.000000000000000000
+              Viewport.Height = 386.300000000000000000
+              inherited FlowLayout1: TFlowLayout
+                inherited Nome_rectagle: TRectangle
+                  inherited Name_Tarefa: TEdit
+                    Size.Height = 32.000000000000000000
+                  end
+                end
+                inherited Desc_rectagle: TRectangle
+                  inherited Desc_Tarefa: TMemo
+                    Viewport.Width = 318.000000000000000000
+                    Viewport.Height = 119.000000000000000000
+                  end
+                end
+                inherited Flow_Pri_Button_Layout: TFlowLayout
+                  Padding.Top = 8.000000000000000000
+                  Padding.Bottom = 8.000000000000000000
+                  inherited Pri_Extrema: TRectangle
+                    Position.Y = 13.000000000000000000
+                    inherited Pri_Extrema_Text: TLabel
+                      TextSettings.Font.StyleExt = {00040000000200000004000000}
+                    end
+                  end
+                  inherited Pri_Alta: TRectangle
+                    Position.Y = 13.000000000000000000
+                  end
+                  inherited Pri_Regular: TRectangle
+                    Position.Y = 13.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

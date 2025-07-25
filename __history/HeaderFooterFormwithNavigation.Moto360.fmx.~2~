@@ -1,0 +1,62 @@
+inherited TDLMD_Moto360: TTDLMD_Moto360
+  ClientHeight = 218
+  ClientWidth = 240
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Size.Width = 240.000000000000000000
+    Size.Height = 218.000000000000000000
+    Sizes = (
+      240s
+      218s
+      240s
+      218s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout1: TScaledLayout
+        OriginalWidth = 240.000000000000000000
+        OriginalHeight = 218.000000000000000000
+        Size.Width = 240.000000000000000000
+        Size.Height = 218.000000000000000000
+        inherited S: TRectangle
+          Size.Width = 240.000000000000000000
+          Size.Height = 218.000000000000000000
+          inherited Button_Layout: TLayout
+            Position.Y = 165.000000000000000000
+            Size.Width = 240.000000000000000000
+            inherited Nova_Tarefa_Button: TCircle
+              Position.X = 185.000000000000000000
+            end
+          end
+          inherited Top_Bar_Layout: TLayout
+            Size.Width = 240.000000000000000000
+            inherited info: TLabel
+              Size.Width = 240.000000000000000000
+            end
+            inherited Search_Layout: TLayout
+              Size.Width = 240.000000000000000000
+              inherited Search_Bar_BG: TRectangle
+                Size.Width = 189.000000000000000000
+                inherited Search_Bar: TEdit
+                  Size.Width = 189.000000000000000000
+                end
+              end
+            end
+          end
+          inherited Tarefas_Layout: TLayout
+            Position.Y = -61.000000000000000000
+            Size.Width = 240.000000000000000000
+            inherited Tarefas_Scroll_Layout: TScrollBox
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 368.500000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+    end
+  end
+end

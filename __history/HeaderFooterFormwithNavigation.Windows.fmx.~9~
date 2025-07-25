@@ -1,0 +1,95 @@
+inherited TDLMD_Windows: TTDLMD_Windows
+  DesignerMasterStyle = 0
+  inherited TabControl: TTabControl
+    Sizes = (
+      384s
+      535s
+      384s
+      535s)
+    inherited Inicio: TTabItem
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout1: TScaledLayout
+        OriginalWidth = 384.000000000000000000
+        OriginalHeight = 535.000000000000000000
+        Size.Width = 384.000000000000000000
+        Size.Height = 535.000000000000000000
+        inherited S: TRectangle
+          Size.Width = 384.000000000000000000
+          Size.Height = 535.000000000000000000
+          inherited Button_Layout: TLayout
+            Position.Y = 482.000000000000000000
+            Size.Width = 384.000000000000000000
+          end
+          inherited Top_Bar_Layout: TLayout
+            Size.Width = 384.000000000000000000
+            inherited info: TLabel
+              Size.Width = 384.000000000000000000
+            end
+            inherited Search_Layout: TLayout
+              Size.Width = 384.000000000000000000
+              inherited Search_Bar_BG: TRectangle
+                Size.Width = 333.000000000000000000
+                inherited Search_Bar: TEdit
+                  Size.Width = 333.000000000000000000
+                end
+              end
+            end
+          end
+          inherited Tarefas_Layout: TLayout
+            Size.Width = 384.000000000000000000
+            Size.Height = 377.000000000000000000
+            inherited Tarefas_Scroll_Layout: TScrollBox
+              Position.X = 10.298060417175290000
+              Size.Width = 366.000122070312500000
+              Viewport.Width = 369.900000000000000000
+              Viewport.Height = 352.600000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited TabItem2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      StyledSettings = [Family, Size, Style, FontColor, Other]
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      inherited ScaledLayout2: TScaledLayout
+        OriginalWidth = 384.000000000000000000
+        OriginalHeight = 535.000000000000000000
+        Size.Width = 384.000000000000000000
+        Size.Height = 535.000000000000000000
+        inherited Rectangle1: TRectangle
+          Size.Width = 384.000000000000000000
+          Size.Height = 535.000000000000000000
+          inherited Layout1: TLayout
+            Position.Y = 482.000000000000000000
+            Size.Width = 384.000000000000000000
+            inherited Create_Task: TButton
+              Margins.Right = 3.000000000000000000
+              Size.Width = 373.000000000000000000
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+            end
+          end
+          inherited Layout2: TLayout
+            Size.Width = 384.000000000000000000
+            inherited Label3: TLabel
+              Size.Width = 384.000000000000000000
+            end
+          end
+          inherited Layout4: TLayout
+            Size.Width = 384.000000000000000000
+            Size.Height = 417.000000000000000000
+            inherited ScrollBox1: TScrollBox
+              Size.Width = 366.000122070312500000
+              Viewport.Width = 350.000000000000000000
+              Viewport.Height = 386.300000000000000000
+            end
+          end
+        end
+      end
+    end
+  end
+end
